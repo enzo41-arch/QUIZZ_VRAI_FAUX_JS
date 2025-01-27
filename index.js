@@ -1,27 +1,33 @@
-const questionContainer = document.querySelector(".click-event");
+//on recupere toutes les div
+const quiz = document.querySelectorAll('.click-event.box');
 
-//ecoute le declenchcement du click
-questionContainer.addEventListener("click",() => {
-    console.log("test du click");
-    questionContainer.style.background = "red";
-    questionContainer.style.border = "7px solid black";
-})
-questionContainer.addEventListener("click",() =>{
-    questionContainer.classList.toggle("question-clicked")
-})
+//on initie le compteur
+let repcorrect = 0;
 
-//selectionner un element avec son id
-const btn1 = document.querySelector("#btn-1");
-const btn2 = document.getElementById("btn-2");
-console.log(btn1);
+//iteration des elements du quiz
+//selection de tous les boutons dans les box
+quiz.forEach((box) => {
+    const buttons = box.querySelectorAll('button');
+    const question = box.querySelector('p');
 
-const response = document.querySelector("p");
-btn1.addEventListener("click", () => {
-    response.classList.add("show-response")
-    response.style.background = "red";
-})
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            // Réinitialiser le style des boutons
+            buttons.forEach((btn) => btn.style.backgroundColor = '');
 
-btn2.addEventListener("click", () => {
-    response.classList.add("show-response")
-    response.style.background = "green";
-})
+            // Vérifier si le bouton cliqué est la bonne réponse
+            const isCorrect = button.getAttribute('data-correct') === 'true';
+
+            if (isCorrect) {
+                button.style.backgroundColor = 'green'; // Marquer comme correct
+                repcorrect++; // Incrémenter le compteur de bonnes réponses
+            } else {
+                button.style.backgroundColor = 'red'; // Marquer comme incorrect
+            }
+            // Afficher le compteur de bonnes réponses
+            document.getElementById('result').textContent = `Nombre de bonnes réponses: ${repcorrect}`;
+        });
+    });
+});
+
+
