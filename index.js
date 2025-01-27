@@ -13,9 +13,9 @@ quiz.forEach((box) => {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             // Vérifier si le bouton cliqué est la bonne réponse
-            const isCorrect = button.getAttribute('value') === 'true';
+            const correct = button.getAttribute('value') === 'true';
 
-            if (isCorrect) {
+            if (correct) {
                 button.style.backgroundColor = 'green'; // Marquer comme correct
                 repcorrect++; // Incrémenter le compteur de bonnes réponses
             } else {
