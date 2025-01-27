@@ -12,11 +12,8 @@ quiz.forEach((box) => {
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            // Réinitialiser le style des boutons
-            buttons.forEach((btn) => btn.style.backgroundColor = '');
-
             // Vérifier si le bouton cliqué est la bonne réponse
-            const isCorrect = button.getAttribute('data-correct') === 'true';
+            const isCorrect = button.getAttribute('value') === 'true';
 
             if (isCorrect) {
                 button.style.backgroundColor = 'green'; // Marquer comme correct
@@ -24,7 +21,7 @@ quiz.forEach((box) => {
             } else {
                 button.style.backgroundColor = 'red'; // Marquer comme incorrect
             }
-            // Afficher le compteur de bonnes réponses
+            // Affichage du compteur
             document.getElementById('result').textContent = `Nombre de bonnes réponses: ${repcorrect}`;
         });
     });
