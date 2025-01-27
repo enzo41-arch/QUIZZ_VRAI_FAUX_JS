@@ -4,6 +4,12 @@ body{
     color: white;
 }
 
+h1{
+    text-align: center;
+    background: black;
+    color: white;
+}
+
 .box{
     border: 2px solid white;
     background: black;
